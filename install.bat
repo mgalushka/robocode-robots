@@ -1,0 +1,11 @@
+call mvn install:install-file -Dfile=codesize-1.1 -DgroupId=robocode -DartifactId=codesize -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=picocontainer-2.8 -DgroupId=robocode -DartifactId=picocontainer -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode.battle-1.7.4.0 -DgroupId=robocode -DartifactId=robocode.battle -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode.core-1.7.4.0 -DgroupId=robocode -DartifactId=robocode.core -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode.host-1.7.4.0 -DgroupId=robocode -DartifactId=robocode.host -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode -DgroupId=robocode -DartifactId=robocode -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode.repository-1.7.4.0 -DgroupId=robocode -DartifactId=robocode.repository -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode.sound-1.7.4.0 -DgroupId=robocode -DartifactId=robocode.sound -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode.ui.editor-1.7.4.0 -DgroupId=robocode -DartifactId=robocode.ui.editor -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=robocode.ui-1.7.4.0 -DgroupId=robocode -DartifactId=robocode.ui -Dversion=1.7.4.0 -Dpackaging=jar
+call mvn install:install-file -Dfile=roborumble -DgroupId=robocode -DartifactId=roborumble -Dversion=1.7.4.0 -Dpackaging=jar

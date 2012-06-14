@@ -1,6 +1,12 @@
+/.idea
+
+
 *.class
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
+# IDEA project files #
+*.iml
