@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="robots" default="all">
+  
+  
+  <property file="robots.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.robocode.classpath">
+    <pathelement location="C:/robocode/libs/codesize-1.1.jar"/>
+    <pathelement location="C:/robocode/libs/picocontainer-2.8.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.battle-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.core-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.host-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.repository-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.sound-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.ui-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.ui.editor-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/roborumble.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.robocode-g.classpath">
+    <pathelement location="C:/robocode/libs/codesize-1.1.jar"/>
+    <pathelement location="C:/robocode/libs/picocontainer-2.8.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.battle-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.core-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.host-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.repository-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.sound-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.ui-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/robocode.ui.editor-1.7.4.0.jar"/>
+    <pathelement location="C:/robocode/libs/roborumble.jar"/>
+  </path>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module robots -->
+  
+  <dirname property="module.robots.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.robots" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.robots" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.robots" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.robots" value="${compiler.args}"/>
+  
+  <property name="robots.output.dir" value="${module.robots.basedir}/target/classes"/>
+  <property name="robots.testoutput.dir" value="${module.robots.basedir}/target/test-classes"/>
+  
+  <path id="robots.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="robots.module.production.classpath">
+    <path refid="${module.jdk.classpath.robots}"/>
+    <path refid="library.robocode.classpath"/>
+    <path refid="library.robocode-g.classpath"/>
+  </path>
+  
+  <path id="robots.runtime.production.module.classpath">
+    <pathelement location="${robots.output.dir}"/>
+    <path refid="library.robocode.classpath"/>
+    <path refid="library.robocode-g.classpath"/>
+  </path>
+  
+  <path id="robots.module.classpath">
+    <path refid="${module.jdk.classpath.robots}"/>
+    <pathelement location="${robots.output.dir}"/>
+    <path refid="library.robocode.classpath"/>
+    <path refid="library.robocode-g.classpath"/>
+  </path>
+  
+  <path id="robots.runtime.module.classpath">
+    <pathelement location="${robots.testoutput.dir}"/>
+    <pathelement location="${robots.output.dir}"/>
+    <path refid="library.robocode.classpath"/>
+    <path refid="library.robocode-g.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.robots">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.robots">
+    <patternset refid="excluded.from.module.robots"/>
+  </patternset>
+  
+  <path id="robots.module.sourcepath">
+    <dirset dir="${module.robots.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="robots.module.test.sourcepath">
+    <dirset dir="${module.robots.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.robots" depends="compile.module.robots.production,compile.module.robots.tests" description="Compile module robots"/>
+  
+  <target name="compile.module.robots.production" description="Compile module robots; production classes">
+    <mkdir dir="${robots.output.dir}"/>
+    <javac destdir="${robots.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.robots}/javac">
+      <compilerarg line="${compiler.args.robots}"/>
+      <bootclasspath refid="robots.module.bootclasspath"/>
+      <classpath refid="robots.module.production.classpath"/>
+      <src refid="robots.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.robots"/>
+    </javac>
+    
+    <copy todir="${robots.output.dir}">
+      <fileset dir="${module.robots.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+
+      <copy overwrite="true" todir="C:/robocode/robots">
+          <fileset dir="${robots.output.dir}"/>
+      </copy>
+  </target>
+  
+  <target name="compile.module.robots.tests" depends="compile.module.robots.production" description="compile module robots; test classes" unless="skip.tests">
+    <mkdir dir="${robots.testoutput.dir}"/>
+    <javac destdir="${robots.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.robots}/javac">
+      <compilerarg line="${compiler.args.robots}"/>
+      <bootclasspath refid="robots.module.bootclasspath"/>
+      <classpath refid="robots.module.classpath"/>
+      <src refid="robots.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.robots"/>
+    </javac>
+    
+    <copy todir="${robots.testoutput.dir}">
+      <fileset dir="${module.robots.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.robots" description="cleanup module">
+    <delete dir="${robots.output.dir}"/>
+    <delete dir="${robots.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.robots" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.robots" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

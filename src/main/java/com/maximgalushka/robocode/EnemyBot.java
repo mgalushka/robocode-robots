@@ -11,12 +11,12 @@ import robocode.ScannedRobotEvent;
  */
 public class EnemyBot extends Robot {
 
-    private double bearing;
-    private double distance;
-    private double energy;
-    private double heading;
-    private String name = "";
-    private double velocity;
+    private volatile double bearing;
+    private volatile double distance;
+    private volatile double energy;
+    private volatile double heading;
+    private volatile String name = "";
+    private volatile double velocity;
 
     public double getDistance() {
         return distance;
@@ -74,11 +74,12 @@ public class EnemyBot extends Robot {
         name = "";
         velocity = 0.0;
 
-        System.out.printf("Reset bot\n");
+        System.out.printf("Reset tracked bot!\n");
     }
 
 
     public boolean none() {
+        System.out.printf("None tracked!\n");
         return "".equals(name);
     }
 
@@ -87,7 +88,7 @@ public class EnemyBot extends Robot {
         distance = e.getDistance();
         energy = e.getEnergy();
         heading = e.getHeading();
-        name = "";
+        name = e.getName();
         velocity = e.getVelocity();
     }
 
