@@ -93,9 +93,14 @@ public class MaximBot extends AdvancedRobot {
         // distance = rate * time, solved for time
         long time = (long)(enemy.getDistance() / bulletSpeed);
 
+        long futureT = (long) Math.floor(enemy.getFutureT(this, bulletSpeed));
+
+        System.out.printf(String.format("Time: [%d], FutureTime: [%d], Diff: [%d]\n",
+                                        time, futureT, Math.abs(time - futureT)));
+
         // calculate gun turn to predicted x,y location
-        double futureX = enemy.getFutureX(time);
-        double futureY = enemy.getFutureY(time);
+        double futureX = enemy.getFutureX(futureT);
+        double futureY = enemy.getFutureY(futureT);
         double absDeg = absoluteBearing(getX(), getY(), futureX, futureY);
         // non-predictive firing can be done like this:
         //double absDeg = absoluteBearing(getX(), getY(), enemy.getX(), enemy.getY());

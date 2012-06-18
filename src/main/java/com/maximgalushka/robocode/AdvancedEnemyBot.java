@@ -42,4 +42,33 @@ public class AdvancedEnemyBot extends EnemyBot{
     public double getFutureY(long when){
         return y + Math.cos(Math.toRadians(getHeading())) * getVelocity() * when;
     }
+
+    public double getFutureT(Robot robot, double bulletVelocity){
+
+        // enemy velocity
+        double v_E = getVelocity();
+
+        // temp variables
+        double x_diff = x - robot.getX();
+        double y_diff = y - robot.getY();
+
+        // angles of enemy's heading
+        double sin = Math.sin(Math.toRadians(getHeading()));
+        double cos = Math.cos(Math.toRadians(getHeading()));
+
+        // calculated time
+        double T;
+        double v_B = bulletVelocity;
+
+        double xy = (x_diff*sin + y_diff*cos);
+
+        T = ( (v_E*xy) + Math.sqrt(sqr(v_E)*sqr(xy) + (sqr(x_diff) + sqr(y_diff))*(sqr(v_B) + sqr(v_E))) ) / (sqr(v_B) - sqr(v_E));
+
+        return T;
+
+    }
+
+    private static double sqr(double in){
+        return in * in;
+    }
 }
