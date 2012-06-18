@@ -1,9 +1,6 @@
 package com.maximgalushka.robocode;
 
-import robocode.AdvancedRobot;
-import robocode.RobotDeathEvent;
-import robocode.ScannedRobotEvent;
-import robocode.WinEvent;
+import robocode.*;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -21,6 +18,11 @@ public class MaximBot extends AdvancedRobot {
     private volatile byte radarDirection = 1;
 
     private AtomicInteger moveCount = new AtomicInteger(0);
+
+    private AtomicInteger missCount = new AtomicInteger(0);
+
+    private double fixedRatio = 1;
+    private boolean fixed = false;
 
     @Override
     public void run() {
@@ -96,11 +98,13 @@ public class MaximBot extends AdvancedRobot {
         long futureT = (long) Math.floor(enemy.getFutureT(this, bulletSpeed));
 
         System.out.printf(String.format("Time: [%d], FutureTime: [%d], Diff: [%d]\n",
-                                        time, futureT, Math.abs(time - futureT)));
+                time, futureT, Math.abs(time - futureT)));
+
+        long calculatedAveragedTime = time + (long)Math.floor((futureT - time)*getRatio());
 
         // calculate gun turn to predicted x,y location
-        double futureX = enemy.getFutureX(futureT);
-        double futureY = enemy.getFutureY(futureT);
+        double futureX = enemy.getFutureX(calculatedAveragedTime);
+        double futureY = enemy.getFutureY(calculatedAveragedTime);
         double absDeg = absoluteBearing(getX(), getY(), futureX, futureY);
         // non-predictive firing can be done like this:
         //double absDeg = absoluteBearing(getX(), getY(), enemy.getX(), enemy.getY());
@@ -207,5 +211,28 @@ public class MaximBot extends AdvancedRobot {
     public void execute(){
         moveCount.incrementAndGet();
         super.execute();
+    }
+
+    @Override
+    public void onHitRobot(HitRobotEvent event) {
+        missCount.set(0);
+    }
+
+    @Override
+    public void onBulletHit(BulletHitEvent event) {
+        missCount.incrementAndGet();
+    }
+
+    private synchronized double getRatio(){
+        if(fixed && missCount.get() < 3) return fixedRatio;
+        if(missCount.get() >= 3){
+            fixedRatio = 0;
+            fixed = true;
+        }
+        else{
+            fixedRatio = missCount.get()/3;
+            fixed = true;
+        }
+        return fixedRatio;
     }
 }
