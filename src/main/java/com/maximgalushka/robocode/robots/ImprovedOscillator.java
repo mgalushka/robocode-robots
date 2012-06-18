@@ -55,6 +55,7 @@ public class ImprovedOscillator extends AdvancedRobot {
 			turn += 30 * radarDirection;
 			setTurnRadarRight(turn);
 			radarDirection *= -1;
+
 		}
 	}
 

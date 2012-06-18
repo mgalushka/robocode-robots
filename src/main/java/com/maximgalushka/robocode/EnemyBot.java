@@ -73,6 +73,8 @@ public class EnemyBot extends Robot {
         heading = 0.0;
         name = "";
         velocity = 0.0;
+
+        System.out.printf("Reset bot\n");
     }
 
 
@@ -87,5 +89,17 @@ public class EnemyBot extends Robot {
         heading = e.getHeading();
         name = "";
         velocity = e.getVelocity();
+    }
+
+    @Override
+    public String toString() {
+        return "EnemyBot{" +
+                "bearing=" + bearing +
+                ", distance=" + distance +
+                ", energy=" + energy +
+                ", heading=" + heading +
+                ", name='" + name + '\'' +
+                ", velocity=" + velocity +
+                '}';
     }
 }
